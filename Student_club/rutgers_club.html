@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rutgers [Club Name] — About</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --red: #CC0033;
+    --cream: #FAF7F2;
+    --dark: #1C1614;
+    --muted: #7A6A62;
+    --border: #E5DED6;
+    --white: #FFFFFF;
+  } 
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); font-family: 'IBM Plex Sans', sans-serif; color: var(--dark); }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 40px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+
+  /* HERO */
+  .hero {
+    background: var(--red);
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: 'RU';
+    position: absolute;
+    right: 40px;
+    bottom: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); color: #fff; line-height: 1.1; max-width: 520px; }
+  .hero-sub { color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 300; margin-top: 12px; max-width: 460px; line-height: 1.7; }
+
+  /* PAGE WRAP */
+  .page-wrap { max-width: 820px; margin: 0 auto; padding: 52px 24px 80px; }
+
+  /* ABOUT INTRO */
+  .about-intro {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin-bottom: 36px;
+  }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .about-intro h2 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; }
+  .about-intro p { font-size: 14px; color: var(--muted); line-height: 1.85; }
+
+  /* STATS */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 36px; }
+  .stat-box { background: var(--dark); color: #fff; border-radius: 10px; padding: 22px 18px; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--red); line-height: 1; margin-bottom: 5px; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ACCORDION */
+  .block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .accordion { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+  .acc-item { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+  .acc-item.open { border-color: var(--red); box-shadow: 0 2px 14px rgba(204,0,51,0.1); }
+  .acc-trigger { width: 100%; background: none; border: none; padding: 17px 20px; display: flex; align-items: center; gap: 12px; cursor: pointer; text-align: left; }
+  .acc-trigger:hover { background: #fff6f7; }
+  .acc-emoji { font-size: 19px; width: 28px; text-align: center; flex-shrink: 0; }
+  .acc-title { flex: 1; font-size: 15px; font-weight: 600; color: var(--dark); }
+  .acc-arrow { width: 17px; height: 17px; color: var(--muted); transition: transform 0.3s; flex-shrink: 0; }
+  .acc-item.open .acc-arrow { transform: rotate(180deg); color: var(--red); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .acc-body-inner { padding: 4px 20px 20px 60px; font-size: 14px; color: var(--muted); line-height: 1.85; }
+  .acc-body-inner ul { padding-left: 16px; margin-top: 8px; }
+  .acc-body-inner ul li { margin-bottom: 6px; }
+  .acc-body-inner p + p { margin-top: 10px; }
+
+  /* NEWS */
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .news-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; padding: 20px 20px 16px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
+  .news-card:hover { border-color: var(--red); transform: translateY(-2px); }
+  .news-date { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 7px; }
+  .news-title { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--dark); line-height: 1.35; margin-bottom: 9px; }
+  .news-excerpt { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .news-tag { display: inline-block; margin-top: 11px; background: #fff0f3; color: var(--red); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  footer { background: var(--dark); text-align: center; padding: 24px 20px; font-size: 13px; color: rgba(255,255,255,0.35); }
+  footer span { color: var(--red); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Rutgers <span></span></div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">About</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Members</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Rutgers University ·Newark</div>
+  <h1>About Our  Web desing Club</h1>
+  <p class="hero-sub">A student-run organization dedicated to [mission placeholder]. Open to all Rutgers students, no experience required.</p>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ABOUT INTRO -->
+  <div class="about-intro">
+    <div class="section-label">Who We Are</div>
+    <h2>A Place for Every Rutgers Student</h2>
+    <p>
+     We are a community of passionate students at Rutgers University who come together around. Whether you're a freshman just getting started or a senior looking to give back, there's a place for you here. We host regular meetings, workshops, and social events throughout the semester.
+    </p>
+  </div>
+
+
+
+  <!-- DROPDOWNS -->
+  <div class="block-title">Learn More</div>
+  <div class="accordion">
+
+    <div class="acc-item" id="origin">
+      <button class="acc-trigger" onclick="toggle('origin')">
+        <span class="acc-emoji">📜</span>
+        <span class="acc-title">Origin of the Club</span>
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body" id="body-origin">
+        <div class="acc-body-inner">
+          <p>The club was founded in <strong>[Year]</strong> by a small group of students who wanted to create a space for [shared interest] on campus. What started as informal meetups quickly grew into a fully recognized student organization at Rutgers.</p>
+          <p>Over the years we've expanded our programs, built partnerships with local organizations, and welcomed hundreds of members. Our founding principles — [Value 1], [Value 2], and [Value 3] — still guide everything we do today.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="benefits">
+      <button class="acc-trigger" onclick="toggle('benefits')">
+        <span class="acc-emoji">🎁</span>
+        <span class="acc-title">Member Benefits</span>
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body" id="body-benefits">
+        <div class="acc-body-inner">
+          <p>As a member you'll gain access to exclusive perks including:</p>
+          <ul>
+            <li>Workshops, skill-building sessions, and guest speaker events</li>
+            <li>Networking with alumni and industry professionals</li>
+            <li>Priority registration for competitions and retreats</li>
+            <li>Access to our shared resource library and member Discord</li>
+            <li>Club merchandise at member pricing</li>
+            <li>Letters of recommendation from club leadership (active members)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-item" id="join">
+      <button class="acc-trigger" onclick="toggle('join')">
+        <span class="acc-emoji">✋</span>
+        <span class="acc-title">How to Join</span>
+        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="acc-body" id="body-join">
+        <div class="acc-body-inner">
+          <p>Joining is open to all enrolled Rutgers students — no prerequisites or tryouts.</p>
+          <ul>
+            <li><strong>Step 1:</strong> Fill out our interest form at [link placeholder]</li>
+            <li><strong>Step 2:</strong> Attend a general body meeting — held every [Day] at [Time]</li>
+            <li><strong>Step 3:</strong> Blah </li>
+            <li><strong>Step 4:</strong> Blah</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEWS -->
+  <div class="block-title">Latest News</div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-date">March 20, 2026</div>
+      <div class="news-title">Spring General Body Meeting Recap</div>
+      <div class="news-excerpt">Over 60 members joined our semester kickoff. We announced upcoming events and introduced new exec board members.</div>
+      <span class="news-tag">Announcement</span>
+    </div>
+    <div class="news-card">
+      <div class="news-date">March 12, 2026</div>
+      <div class="news-title">Workshop: Intro to [Topic] — Registration Open</div>
+      <div class="news-excerpt">Sign up for our hands-on workshop this month. Spots are limited — members get priority. No prior experience needed.</div>
+      <span class="news-tag">Workshop</span>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Rutgers <span>[Club Name]</span> · All rights reserved · Newark, NJ
+</footer>
+
+<script>
+  function toggle(id) {
+    const item = document.getElementById(id);
+    const body = document.getElementById('body-' + id);
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.acc-item').forEach(i => {
+      i.classList.remove('open');
+      const b = document.getElementById('body-' + i.id);
+      if (b) b.style.maxHeight = '0';
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+</script>
+</body>
+</html>
+
