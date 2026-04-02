@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rutgers-red: #CC0033;
+      --rutgers-dark-red: #8a0020;
+      --card-bg: #e8e8e8;
+      --card-border: #c8c8c8;
+      --text-dark: #1a1a1a;
+      --text-muted: #555;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--rutgers-red);
+      min-height: 100vh;
+      padding: 40px 60px;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 36px;
+    }
+
+    .page-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    /* Rutgers "R" logo block */
+    .rutgers-logo {
+      width: 130px;
+      height: 130px;
+      flex-shrink: 0;
+    }
+
+    .rutgers-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ── Announcement Cards ── */
+    .announcements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 680px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 14px 20px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    .card:hover {
+      background-color: #f2f2f2;
+      transform: translateX(4px);
+      box-shadow: -4px 0 0 var(--rutgers-dark-red), 2px 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .card-title .date {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .card-description {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ── Older Announcements Link ── */
+    .older-link {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .older-link a {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.15s ease;
+    }
+
+    .older-link a:hover {
+      color: rgba(255, 255, 255, 0.95);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1 class="page-title">Announcements</h1>
+
+    <!-- Rutgers Block R logo -->
+    <div class="rutgers-logo">
+      <img src="/mnt/user-data/uploads/Rutgers_Logo.webp" alt="Rutgers R logo" />
+    </div>
+  </header>
+
+  <main>
+    <ul class="announcements-list" role="list">
+      <li class="card" tabindex="0">
+        <div class="card-title">Announcement Title <span class="date">- date mm/dd/yy</span></div>
+        <p class="card-description">This is going to be a short description of the announcement</p>
+      </li>
+      <li class="card" tabindex="0">
+        <div class="card-title">Announcement Title <span class="date">- date mm/dd/yy</span></div>
+        <p class="card-description">This is going to be a short description of the announcement</p>
+      </li>
+      <li class="card" tabindex="0">
+        <div class="card-title">Announcement Title <span class="date">- date mm/dd/yy</span></div>
+        <p class="card-description">This is going to be a short description of the announcement</p>
+      </li>
+      <li class="card" tabindex="0">
+        <div class="card-title">Announcement Title <span class="date">- date mm/dd/yy</span></div>
+        <p class="card-description">This is going to be a short description of the announcement</p>
+      </li>
+    </ul>
+
+    <div class="older-link">
+      <a href="#">[ Click to view older announcements ]</a>
+    </div>
+  </main>
+
+</body>
+</html>
