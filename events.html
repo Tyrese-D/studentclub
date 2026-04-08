@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Announcements</title>
+<title>Events</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
@@ -128,8 +128,24 @@ p > label{
 
 </style>
 <script>
-function oldAnnouncements() {
-    alert("Older announcements would open here.");
+function registerEvent(eventName) {
+    let isLoggedIn = localStorage.getItem("clubLoggedIn");
+    let isGuest = localStorage.getItem("clubGuest");
+
+    if (isGuest == "Yes" || isLoggedIn != "Yes") {
+        alert("You must login to register for events.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    let registered = localStorage.getItem(eventName);
+    if (registered == "Yes") {
+        alert("You already registered for " + eventName + ".");
+        return;
+    }
+
+    localStorage.setItem(eventName, "Yes");
+    alert("You are registered for " + eventName + ".");
 }
 </script>
 </head>
@@ -145,33 +161,33 @@ function oldAnnouncements() {
 </div>
 
 <div class="hero">
-    <h1>Announcements</h1>
-    <p>Latest club updates and notices</p>
+    <h1>This Semester's Events</h1>
+    <p>View upcoming club activities and register.</p>
 </div>
 
 <div class="container">
-    <div class="announcement">
-        <h2>Applications for E-Board Now Open - 09/01/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
+    <div class="event-box">
+        <h2>Event 1</h2>
+        <p>Career Panel Night</p>
+        <p>September 18, 2026 at 6:00 PM</p>
+        <p>Rutgers Business School</p>
+        <input class="btn" type="button" value="Register" onclick="registerEvent('Career Panel Night')">
     </div>
 
-    <div class="announcement">
-        <h2>Networking Night Registration Live - 09/08/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
+    <div class="event-box">
+        <h2>Event 2</h2>
+        <p>Resume and LinkedIn Workshop</p>
+        <p>October 2, 2026 at 5:30 PM</p>
+        <p>Room 220</p>
+        <input class="btn" type="button" value="Register" onclick="registerEvent('Resume and LinkedIn Workshop')">
     </div>
 
-    <div class="announcement">
-        <h2>New Member Welcome Session - 09/12/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>Volunteer Opportunities Posted - 09/20/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="card">
-        <input class="btn" type="button" value="Click to view older announcements" onclick="oldAnnouncements()">
+    <div class="event-box">
+        <h2>Event 3</h2>
+        <p>Member Social Mixer</p>
+        <p>October 16, 2026 at 7:00 PM</p>
+        <p>Student Center</p>
+        <input class="btn" type="button" value="Register" onclick="registerEvent('Member Social Mixer')">
     </div>
 </div>
 

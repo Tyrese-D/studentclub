@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Announcements</title>
+<title>About the Club</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
@@ -128,8 +128,9 @@ p > label{
 
 </style>
 <script>
-function oldAnnouncements() {
-    alert("Older announcements would open here.");
+function displayDiv(id, elementValue) {
+    document.getElementById(id).style.display =
+        elementValue == 'show' ? 'block' : 'none';
 }
 </script>
 </head>
@@ -145,33 +146,36 @@ function oldAnnouncements() {
 </div>
 
 <div class="hero">
-    <h1>Announcements</h1>
-    <p>Latest club updates and notices</p>
+    <h1>About Our Club</h1>
+    <p>A place for Rutgers students to connect and grow.</p>
 </div>
 
 <div class="container">
-    <div class="announcement">
-        <h2>Applications for E-Board Now Open - 09/01/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>Networking Night Registration Live - 09/08/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>New Member Welcome Session - 09/12/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>Volunteer Opportunities Posted - 09/20/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
+    <div class="card">
+        <h2>Who We Are</h2>
+        <p>We are a student-run organization dedicated to helping students build community, improve professional skills, and get involved on campus.</p>
     </div>
 
     <div class="card">
-        <input class="btn" type="button" value="Click to view older announcements" onclick="oldAnnouncements()">
+        <h2>Learn More</h2>
+        <p><input class="btn" type="button" value="Origin of the Club" onclick="displayDiv('origin','show')"></p>
+        <div id="origin" style="display:none;">
+            <p>The club was created to give Rutgers students a stronger campus community and more opportunities to learn outside of class.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <p><input class="btn" type="button" value="Member Benefits" onclick="displayDiv('benefits','show')"></p>
+        <div id="benefits" style="display:none;">
+            <p>Members can attend events, hear announcements, meet other students, and get access to club resources.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <p><input class="btn" type="button" value="How to Join" onclick="displayDiv('joininfo','show')"></p>
+        <div id="joininfo" style="display:none;">
+            <p>You can attend an event, use the contact page, and ask to be added as a member.</p>
+        </div>
     </div>
 </div>
 

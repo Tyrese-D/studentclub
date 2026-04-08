@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Announcements</title>
+<title>Rutgers Club Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
@@ -128,8 +128,36 @@ p > label{
 
 </style>
 <script>
-function oldAnnouncements() {
-    alert("Older announcements would open here.");
+function displayDiv(id, elementValue) {
+    document.getElementById(id).style.display =
+        elementValue == 'show' ? 'block' : 'none';
+}
+
+function showMessage() {
+    let netid = document.getElementById("netid").value;
+    let password = document.getElementById("password").value;
+
+    if(netid == "" || password == "") {
+        alert("Please enter your NetID and password.");
+    } else {
+        localStorage.setItem("clubLoggedIn", "Yes");
+        localStorage.setItem("clubNetID", netid);
+        localStorage.setItem("clubGuest", "No");
+        alert("Login successful for " + netid + ".");
+        displayDiv('loginBox','none');
+    }
+}
+
+function continueAsGuest() {
+    localStorage.setItem("clubLoggedIn", "No");
+    localStorage.setItem("clubGuest", "Yes");
+    alert("Continuing as guest.");
+    displayDiv('loginBox','none');
+}
+
+// FORCE LOGIN SCREEN ON PAGE LOAD
+window.onload = function() {
+    displayDiv('loginBox','show');
 }
 </script>
 </head>
@@ -145,33 +173,34 @@ function oldAnnouncements() {
 </div>
 
 <div class="hero">
-    <h1>Announcements</h1>
-    <p>Latest club updates and notices</p>
+    <h1>Rutgers Club Website</h1>
+    <p>Build community, learn new skills, and stay connected.</p>
+    <button class="btn" onclick="displayDiv('loginBox', 'show')">Member Login</button>
 </div>
 
 <div class="container">
-    <div class="announcement">
-        <h2>Applications for E-Board Now Open - 09/01/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
+    <div class="card">
+        <h2>Welcome</h2>
+        <p>This home page also includes the login section like you asked. It keeps the coding simple by using a button and a basic JavaScript function to show the login area.</p>
     </div>
 
-    <div class="announcement">
-        <h2>Networking Night Registration Live - 09/08/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
+    <div class="card" id="loginBox">
+        <h2>Login</h2>
+        <p><label>Enter NetID</label>
+        <input type="text" id="netid" placeholder="NetID"></p>
 
-    <div class="announcement">
-        <h2>New Member Welcome Session - 09/12/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
+        <p><label>Enter your password</label>
+        <input type="password" id="password" placeholder="Password"></p>
 
-    <div class="announcement">
-        <h2>Volunteer Opportunities Posted - 09/20/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
+        <p>
+            <input class="btn" type="button" value="Login" onclick="showMessage()">
+            <input class="btn" type="button" value="Continue as Guest" onclick="continueAsGuest()">
+        </p>
     </div>
 
     <div class="card">
-        <input class="btn" type="button" value="Click to view older announcements" onclick="oldAnnouncements()">
+        <h2>Quick Links</h2>
+        <p>Use the navigation bar to view the rest of the pages for the club website.</p>
     </div>
 </div>
 

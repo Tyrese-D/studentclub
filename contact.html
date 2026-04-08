@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Announcements</title>
+<title>Contact Us</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
@@ -128,8 +128,17 @@ p > label{
 
 </style>
 <script>
-function oldAnnouncements() {
-    alert("Older announcements would open here.");
+function submitMessage() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let ruid = document.getElementById("ruid").value;
+    let message = document.getElementById("message").value;
+
+    if(name == "" || email == "" || ruid == "" || message == "") {
+        alert("Please fill out all required fields.");
+    } else {
+        alert("Your message has been submitted.");
+    }
 }
 </script>
 </head>
@@ -145,33 +154,40 @@ function oldAnnouncements() {
 </div>
 
 <div class="hero">
-    <h1>Announcements</h1>
-    <p>Latest club updates and notices</p>
+    <h1>Contact Us!</h1>
+    <p>If you have any questions, please feel free to send us a message.</p>
 </div>
 
 <div class="container">
-    <div class="announcement">
-        <h2>Applications for E-Board Now Open - 09/01/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>Networking Night Registration Live - 09/08/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>New Member Welcome Session - 09/12/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
-    <div class="announcement">
-        <h2>Volunteer Opportunities Posted - 09/20/26</h2>
-        <p>This is going to be a short description of the announcement.</p>
-    </div>
-
     <div class="card">
-        <input class="btn" type="button" value="Click to view older announcements" onclick="oldAnnouncements()">
+        <p><label>Name*</label>
+        <input type="text" id="name" placeholder="Name"></p>
+
+        <p><label>Email*</label>
+        <input type="email" id="email" placeholder="Email"></p>
+
+        <p><label>RUID*</label>
+        <input type="text" id="ruid" placeholder="RUID"></p>
+
+        <p><label>Write Your Message*</label>
+        <textarea id="message" placeholder="Write Your Message"></textarea></p>
+
+        <p><input class="btn" type="button" value="Submit" onclick="submitMessage()"></p>
+    </div>
+
+    <div class="info-box">
+        <h2>Phone</h2>
+        <p>(XXX) XXX-XXXX</p>
+    </div>
+
+    <div class="info-box">
+        <h2>Email</h2>
+        <p>xxxxx@rutgers.business.edu</p>
+    </div>
+
+    <div class="info-box">
+        <h2>Address</h2>
+        <p>1 Washington Pl, Newark, NJ, 07102</p>
     </div>
 </div>
 
