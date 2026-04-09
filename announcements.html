@@ -28,7 +28,25 @@ body{
 .hero{
     background-color:#CC0033;
     color:#FFFFFF;
-    padding:40px;
+    padding:50px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.hero-logo{
+    position:absolute;
+    left:40px;
+    top:50%;
+    transform:translateY(-50%);
+}
+.hero-logo img{
+    height:120px;
+    width:auto;
+    border:3px solid #111111;
+    border-radius:6px;
+}
+.hero-text{
     text-align:center;
 }
 .container{
@@ -145,8 +163,13 @@ function oldAnnouncements() {
 </div>
 
 <div class="hero">
-    <h1>Announcements</h1>
-    <p>Latest club updates and notices</p>
+    <div class="hero-logo">
+        <img src="Rut logo.png" alt="Rutgers Newark Logo">
+    </div>
+    <div class="hero-text">
+        <h1>Announcements</h1>
+        <p>Latest club updates and notices</p>
+    </div>
 </div>
 
 <div class="container">
