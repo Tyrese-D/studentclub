@@ -28,7 +28,25 @@ body{
 .hero{
     background-color:#CC0033;
     color:#FFFFFF;
-    padding:40px;
+    padding:50px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.hero-logo{
+    position:absolute;
+    left:40px;
+    top:50%;
+    transform:translateY(-50%);
+}
+.hero-logo img{
+    height:120px;
+    width:auto;
+    border:3px solid #111111;
+    border-radius:6px;
+}
+.hero-text{
     text-align:center;
 }
 .container{
@@ -155,7 +173,6 @@ function continueAsGuest() {
     displayDiv('loginBox','none');
 }
 
-// FORCE LOGIN SCREEN ON PAGE LOAD
 window.onload = function() {
     displayDiv('loginBox','show');
 }
@@ -173,9 +190,14 @@ window.onload = function() {
 </div>
 
 <div class="hero">
-    <h1>Rutgers Club Website</h1>
-    <p>Build community, learn new skills, and stay connected.</p>
-    <button class="btn" onclick="displayDiv('loginBox', 'show')">Member Login</button>
+    <div class="hero-logo">
+        <img src="Rut logo.png" alt="Rutgers Newark Logo">
+    </div>
+    <div class="hero-text">
+        <h1>Rutgers Club Website</h1>
+        <p>Build community, learn new skills, and stay connected.</p>
+        <button class="btn" onclick="displayDiv('loginBox', 'show')">Member Login</button>
+    </div>
 </div>
 
 <div class="container">
@@ -213,4 +235,5 @@ window.onload = function() {
 </div>
 
 </body>
+</html>
 </html>
