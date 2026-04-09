@@ -28,7 +28,25 @@ body{
 .hero{
     background-color:#CC0033;
     color:#FFFFFF;
-    padding:40px;
+    padding:50px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.hero-logo{
+    position:absolute;
+    left:40px;
+    top:50%;
+    transform:translateY(-50%);
+}
+.hero-logo img{
+    height:120px;
+    width:auto;
+    border:3px solid #111111;
+    border-radius:6px;
+}
+.hero-text{
     text-align:center;
 }
 .container{
@@ -140,8 +158,13 @@ p > label{
 </div>
 
 <div class="hero">
-    <h1>Member Directory</h1>
-    <p>Current active members</p>
+    <div class="hero-logo">
+        <img src="Rut logo.png" alt="Rutgers Newark Logo">
+    </div>
+    <div class="hero-text">
+        <h1>Member Directory</h1>
+        <p>Current active members</p>
+    </div>
 </div>
 
 <div class="container">
@@ -178,7 +201,7 @@ p > label{
                 <td>Active</td>
             </tr>
             <tr>
-                <td>Tyres Dieudonne</td>
+                <td>Tyrese Dieudonne</td>
                 <td>td526@scarletmail.rutgers.edu</td>
                 <td>551-284-7593</td>
                 <td>Active</td>
