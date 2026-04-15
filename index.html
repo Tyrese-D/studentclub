@@ -146,23 +146,40 @@ p > label{
 
 </style>
 <script>
+const validAccounts = [
+    { netid: "aa123", password: "LebronJames" },
+    { netid: "GG123", password: "Kobe" },
+    { netid: "DD123", password: "Test" }
+];
+
 function displayDiv(id, elementValue) {
     document.getElementById(id).style.display =
         elementValue == 'show' ? 'block' : 'none';
 }
 
 function showMessage() {
-    let netid = document.getElementById("netid").value;
-    let password = document.getElementById("password").value;
+    let netid = document.getElementById("netid").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let errorMsg = document.getElementById("loginError");
 
-    if(netid == "" || password == "") {
-        alert("Please enter your NetID and password.");
-    } else {
+    if (netid == "" || password == "") {
+        errorMsg.textContent = "Please enter your NetID and password.";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+    let found = validAccounts.find(a => a.netid === netid && a.password === password);
+
+    if (found) {
         localStorage.setItem("clubLoggedIn", "Yes");
         localStorage.setItem("clubNetID", netid);
         localStorage.setItem("clubGuest", "No");
+        errorMsg.style.display = "none";
         alert("Login successful for " + netid + ".");
-        displayDiv('loginBox','none');
+        displayDiv('loginBox', 'none');
+    } else {
+        errorMsg.textContent = "Account not found. Incorrect NetID or password.";
+        errorMsg.style.display = "block";
     }
 }
 
@@ -214,6 +231,8 @@ window.onload = function() {
         <p><label>Enter your password</label>
         <input type="password" id="password" placeholder="Password"></p>
 
+        <p id="loginError" style="color:red; display:none; font-weight:bold; margin-bottom:10px;"></p>
+
         <p>
             <input class="btn" type="button" value="Login" onclick="showMessage()">
             <input class="btn" type="button" value="Continue as Guest" onclick="continueAsGuest()">
@@ -235,5 +254,4 @@ window.onload = function() {
 </div>
 
 </body>
-</html>
 </html>
