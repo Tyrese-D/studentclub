@@ -6,14 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
-/* ── Base body styling ── */
+/* ── Base body styling ──
+   Arial is used as the font because it is clean and easy to read.
+   The light gray background (#f4f4f4) creates contrast so the white cards stand out. */
 body{
     font-family: Arial, sans-serif;
     margin:0;
     background-color:#f4f4f4;
 }
 
-/* ── Navigation bar ── */
+/* ── Navigation bar ──
+   The dark charcoal (#333333) background keeps the nav visually separate from the page content.
+   All links are centered so the bar looks balanced across screen sizes. */
 .nav{
     background-color:#333333;
     padding:15px;
@@ -25,47 +29,57 @@ body{
     margin:0 12px;
     font-weight:bold;
 }
-/* Nav link hover effect */
+/* Hover effect changes link color to a soft pink, giving the user visual feedback when mousing over links. */
 .nav a:hover{
     color:#FFCCCC;
 }
 
-/* ── Hero / banner section ── */
+/* ── Hero / banner section ──
+   The Rutgers scarlet red (#CC0033) background ties the page to the school's official brand colors.
+   Flexbox is used here to center the title text while still allowing the logo to sit to the left. */
 .hero{
-    background-color:#CC0033; /* Rutgers scarlet red */
+    background-color:#CC0033;
     color:#FFFFFF;
     padding:50px 40px;
     display:flex;
     align-items:center;
     justify-content:center;
-    position:relative;
+    position:relative; /* Required so the logo can be absolutely positioned inside this container */
 }
-/* Logo positioned on the left side of the hero */
+
+/* ── Hero logo positioning ──
+   The logo is pulled out of normal document flow using absolute positioning.
+   translateY(-50%) perfectly centers it vertically no matter how tall the hero section is. */
 .hero-logo{
     position:absolute;
     left:40px;
     top:50%;
-    transform:translateY(-50%); /* Vertically centers the logo */
+    transform:translateY(-50%);
 }
 .hero-logo img{
     height:120px;
-    width:auto;
+    width:auto; /* width:auto keeps the logo's original proportions so it does not appear stretched */
     border:3px solid #111111;
     border-radius:6px;
 }
-/* Centered headline text inside the hero */
+
+/* Centered headline text inside the hero banner */
 .hero-text{
     text-align:center;
 }
 
-/* ── Main content container ── */
+/* ── Main content container ──
+   max-width:1100px prevents the content from stretching too wide on large monitors.
+   margin:25px auto centers the container horizontally on the page. */
 .container{
     width:90%;
     max-width:1100px;
-    margin:25px auto; /* Centers container with top/bottom spacing */
+    margin:25px auto;
 }
 
-/* ── White rounded card panels ── */
+/* ── White rounded card panels ──
+   border-radius:20px gives the cards a modern, friendly look.
+   The box-shadow adds a subtle depth effect, making each card feel lifted off the background. */
 .card{
     background-color:#FFFFFF;
     border-radius:20px;
@@ -74,7 +88,9 @@ body{
     margin-bottom:20px;
 }
 
-/* ── Teal action buttons ── */
+/* ── Teal action buttons ──
+   The teal color (#0E5061) was chosen to contrast against the red and white theme, making buttons easy to spot.
+   cursor:pointer changes the mouse cursor to a hand icon so users know the element is clickable. */
 .btn{
     background-color:#0E5061;
     color:#FFFFFF;
@@ -83,11 +99,14 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
+/* Hover state lightens the button slightly to confirm to the user that it is interactive. */
 .btn:hover{
     background-color:#2F6678;
 }
 
-/* ── Shared table styling ── */
+/* ── Shared table styling ──
+   border-collapse:collapse removes the default spacing between table cells so borders appear as clean single lines.
+   This style is defined globally so any table added to any page will look consistent. */
 table{
     width:100%;
     border-collapse:collapse;
@@ -98,24 +117,26 @@ th, td{
     text-align:left;
     border:1px solid #cccccc;
 }
-/* Dark header row */
+/* Dark header row matches the nav color, tying the table header to the rest of the site's design. */
 th{
     background:#333333;
     color:white;
 }
-/* Alternating row colors for readability */
+/* Alternating row colors (zebra striping) make rows easier to read across wide tables. */
 tr:nth-child(even){
     background:#f2f2fe;
 }
 tr:nth-child(odd){
     background:#FFFFFF;
 }
-/* Row highlight on hover */
+/* Highlight color on hover helps users track which row their cursor is on. */
 tr:hover{
     background:#d1ecf1;
 }
 
-/* ── Form input fields ── */
+/* ── Form input fields ──
+   box-sizing:border-box ensures padding is included in the width calculation,
+   so inputs don't accidentally overflow their container. */
 input[type="text"], input[type="password"], input[type="email"], textarea{
     width:100%;
     border:1px solid #333;
@@ -124,6 +145,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
     margin-top:5px;
     margin-bottom:15px;
 }
+/* The textarea is given a fixed height of 150px to give users enough room to write a message. */
 textarea{
     height:150px;
 }
@@ -131,7 +153,9 @@ p > label{
     display:block;
 }
 
-/* ── Footer bar ── */
+/* ── Footer bar ──
+   Matches the nav bar color (#333333) so the top and bottom of every page look consistent.
+   margin-top:30px adds breathing room between the last content section and the footer. */
 .footer{
     background-color:#333333;
     color:#FFFFFF;
@@ -144,7 +168,9 @@ p > label{
     text-decoration:none;
 }
 
-/* ── Announcement item with red left border accent ── */
+/* ── Announcement item ──
+   The bold red left border (#CC0033) acts as a visual accent to draw attention to announcements.
+   This style is used on the announcements page to make each post easy to scan. */
 .announcement{
     background-color:#FFFFFF;
     border-left:6px solid #CC0033;
@@ -152,7 +178,9 @@ p > label{
     margin-bottom:15px;
 }
 
-/* ── Event and info box panels ── */
+/* ── Event and info box panels ──
+   These classes mirror the .card style and are used on the events page and other pages
+   to keep the rounded card look consistent across the entire site. */
 .event-box{
     background-color:#FFFFFF;
     border-radius:20px;
@@ -168,7 +196,9 @@ p > label{
     margin-bottom:15px;
 }
 
-/* ── Login box (hidden by default) ── */
+/* ── Login box ──
+   Hidden by default using display:none so it only appears when triggered by a button click.
+   This avoids cluttering the page with a form the user may not need. */
 #loginBox{
     display:none;
 }
@@ -176,8 +206,11 @@ p > label{
 </style>
 
 <script>
-/* ── Toggle function: shows or hides a div by ID ──
-   Pass 'show' to display the element, anything else to hide it */
+/* ── Toggle visibility function ──
+   This function is called by each "Learn More" button on the page.
+   It takes two arguments: the ID of the div to show or hide, and a string value ('show' or anything else).
+   The ternary operator checks the value and sets display to either 'block' (visible) or 'none' (hidden).
+   This avoids writing separate show/hide functions for every collapsible section. */
 function displayDiv(id, elementValue) {
     document.getElementById(id).style.display =
         elementValue == 'show' ? 'block' : 'none';
@@ -186,7 +219,9 @@ function displayDiv(id, elementValue) {
 </head>
 <body>
 
-<!-- ── Navigation Bar ── -->
+<!-- ── Navigation Bar ──
+     Contains links to all six pages of the site.
+     The active page (About) is included so users always have full navigation available. -->
 <div class="nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -196,39 +231,43 @@ function displayDiv(id, elementValue) {
     <a href="contact.html">Contact</a>
 </div>
 
-<!-- ── Hero Banner ── -->
+<!-- ── Hero Banner ──
+     The red hero section is the first thing visitors see when they land on this page.
+     It immediately communicates the club's Rutgers identity through the logo and scarlet color. -->
 <div class="hero">
-    <!-- Rutgers Newark logo anchored to the left -->
+    <!-- Rutgers Newark logo anchored to the left side of the hero using absolute positioning -->
     <div class="hero-logo">
         <img src="Rut logo.png" alt="Rutgers Newark Logo">
     </div>
-    <!-- Page title and subtitle centered in the banner -->
+    <!-- Page title and short description centered in the banner -->
     <div class="hero-text">
         <h1>About Our Club</h1>
-        <p>A place for Rutgers students to connect and grow. Helping students gain build websites, strengthening development skills.</p>
+        <p>A place for Rutgers students to connect and grow. Helping students build websites and strengthen development skills.</p>
     </div>
 </div>
 
-<!-- ── Main Content Area ── -->
+<!-- ── Main Content Area ──
+     All cards are wrapped in .container to keep content centered and readable on any screen size. -->
 <div class="container">
 
-    <!-- Who We Are section -->
+    <!-- Who We Are card: gives a brief overview of the club's mission and purpose -->
     <div class="card">
         <h2>Who We Are</h2>
-        <p>We are a student-run organization dedicated to helping students build community, improve professional skills and website development, and get involved on campus. Giving student opportunities to strengthen skills and gain experience.</p>
+        <p>We are a student-run organization dedicated to helping students build community, improve professional skills and website development, and get involved on campus. Giving students opportunities to strengthen skills and gain experience.</p>
     </div>
 
-    <!-- Learn More: expandable Origin of the Club section -->
+    <!-- Origin of the Club card: clicking the button calls displayDiv() to reveal hidden content below it.
+         The content div starts hidden (display:none) and becomes visible only when the button is clicked. -->
     <div class="card">
         <h2>Learn More</h2>
-        <!-- Button calls displayDiv() to reveal the hidden origin paragraph -->
         <p><input class="btn" type="button" value="Origin of the Club" onclick="displayDiv('origin','show')"></p>
         <div id="origin" style="display:none;">
-            <p>The club was created to give Rutgers students a stronger campus community and more opportunities to learn outside of class. Helping students get more experience and building websites.</p>
+            <p>The club was created to give Rutgers students a stronger campus community and more opportunities to learn outside of class. Helping students get more experience and build websites.</p>
         </div>
     </div>
 
-    <!-- Expandable Member Benefits section -->
+    <!-- Member Benefits card: reveals a list of benefits when the button is clicked.
+         Uses the same displayDiv() pattern so the interaction is consistent across all three expandable cards. -->
     <div class="card">
         <p><input class="btn" type="button" value="Member Benefits" onclick="displayDiv('benefits','show')"></p>
         <div id="benefits" style="display:none;">
@@ -236,7 +275,8 @@ function displayDiv(id, elementValue) {
         </div>
     </div>
 
-    <!-- Expandable How to Join section -->
+    <!-- How to Join card: tells visitors the steps they can take to become a member.
+         Kept short and direct so the information is easy to act on. -->
     <div class="card">
         <p><input class="btn" type="button" value="How to Join" onclick="displayDiv('joininfo','show')"></p>
         <div id="joininfo" style="display:none;">
@@ -246,7 +286,9 @@ function displayDiv(id, elementValue) {
 
 </div><!-- end .container -->
 
-<!-- ── Footer ── -->
+<!-- ── Footer ──
+     Matches the nav bar styling for a consistent header-and-footer frame around every page.
+     Includes quick links to the most visited pages so users can navigate without scrolling back to the top. -->
 <div class="footer">
     <p>Club Resources</p>
     <a href="index.html">Home</a> |
