@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Announcements</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Basic page setup -->
+<meta charset="UTF-8"> <!-- Supports special characters -->
+<title>Announcements</title> <!-- Page title shown in browser tab -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes page responsive -->
+
 <style>
 
+/* -----------------------------
+   GENERAL PAGE STYLING
+----------------------------- */
+
+/* Sets font and background for whole page */
 body{
     font-family: Arial, sans-serif;
     margin:0;
     background-color:#f4f4f4;
 }
+
+/* Navigation bar styling */
 .nav{
     background-color:#333333;
     padding:15px;
     text-align:center;
 }
+
+/* Navigation links */
 .nav a{
     color:#FFFFFF;
     text-decoration:none;
     margin:0 12px;
     font-weight:bold;
 }
+
+/* Hover effect for nav links */
 .nav a:hover{
     color:#FFCCCC;
 }
+
+/* Header (top banner) */
 .hero{
     background-color:#CC0033;
     color:#FFFFFF;
     padding:40px;
     text-align:center;
 }
+
+/* Main content container */
 .container{
     width:90%;
     max-width:1100px;
     margin:25px auto;
 }
+
+/* Card styling (used for button section) */
 .card{
     background-color:#FFFFFF;
     border-radius:20px;
@@ -43,6 +63,8 @@ body{
     box-shadow:0 4px 8px rgba(0,0,0,0.2);
     margin-bottom:20px;
 }
+
+/* Button styling */
 .btn{
     background-color:#0E5061;
     color:#FFFFFF;
@@ -51,32 +73,46 @@ body{
     border-radius:6px;
     cursor:pointer;
 }
+
+/* Button hover effect */
 .btn:hover{
     background-color:#2F6678;
 }
+
+/* Table styling (not used here but available if needed) */
 table{
     width:100%;
     border-collapse:collapse;
     background-color:#FFFFFF;
 }
+
+/* Table cells */
 th, td{
     padding:12px;
     text-align:left;
     border:1px solid #cccccc;
 }
+
+/* Table header */
 th{
     background:#333333;
     color:white;
 }
+
+/* Alternating row colors */
 tr:nth-child(even){
     background:#f2f2fe;
 }
 tr:nth-child(odd){
     background:#FFFFFF;
 }
+
+/* Hover effect for rows */
 tr:hover{
     background:#d1ecf1;
 }
+
+/* Input fields styling */
 input[type="text"], input[type="password"], input[type="email"], textarea{
     width:100%;
     border:1px solid #333;
@@ -85,12 +121,18 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
     margin-top:5px;
     margin-bottom:15px;
 }
+
+/* Textarea size */
 textarea{
     height:150px;
 }
+
+/* Labels above inputs */
 p > label{
     display:block;
 }
+
+/* Footer styling */
 .footer{
     background-color:#333333;
     color:#FFFFFF;
@@ -98,43 +140,55 @@ p > label{
     padding:20px;
     margin-top:30px;
 }
+
+/* Footer links */
 .footer a{
     color:#FFFFFF;
     text-decoration:none;
 }
+
+/* Announcement box styling */
 .announcement{
     background-color:#FFFFFF;
     border-left:6px solid #CC0033;
     padding:15px;
     margin-bottom:15px;
 }
-.event-box{
-    background-color:#FFFFFF;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
-    margin-bottom:20px;
-}
-.info-box{
+
+/* Extra reusable box styles */
+.event-box, .info-box{
     background-color:#FFFFFF;
     border-radius:20px;
     padding:20px;
     box-shadow:0 4px 8px rgba(0,0,0,0.2);
     margin-bottom:15px;
 }
+
+/* Hidden login box (not used yet) */
 #loginBox{
     display:none;
 }
 
 </style>
+
 <script>
+// -----------------------------
+// JAVASCRIPT FUNCTION
+// -----------------------------
+
+// Runs when button is clicked
 function oldAnnouncements() {
     alert("Older announcements would open here.");
 }
 </script>
+
 </head>
+
 <body>
 
+<!-- -----------------------------
+     NAVIGATION BAR
+------------------------------ -->
 <div class="nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -144,12 +198,20 @@ function oldAnnouncements() {
     <a href="contact.html">Contact</a>
 </div>
 
+<!-- -----------------------------
+     PAGE HEADER
+------------------------------ -->
 <div class="hero">
     <h1>Announcements</h1>
     <p>Latest club updates and notices</p>
 </div>
 
+<!-- -----------------------------
+     MAIN CONTENT
+------------------------------ -->
 <div class="container">
+
+    <!-- Each announcement is a separate box -->
     <div class="announcement">
         <h2>Applications for E-Board Now Open - 09/01/26</h2>
         <p>This is going to be a short description of the announcement.</p>
@@ -170,11 +232,18 @@ function oldAnnouncements() {
         <p>This is going to be a short description of the announcement.</p>
     </div>
 
+    <!-- Button to simulate loading older announcements -->
     <div class="card">
-        <input class="btn" type="button" value="Click to view older announcements" onclick="oldAnnouncements()">
+        <input class="btn" type="button"
+               value="Click to view older announcements"
+               onclick="oldAnnouncements()">
     </div>
+
 </div>
 
+<!-- -----------------------------
+     FOOTER
+------------------------------ -->
 <div class="footer">
     <p>Club Resources</p>
     <a href="index.html">Home</a> |
