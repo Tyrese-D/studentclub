@@ -3,18 +3,18 @@
 // DATABASE CONFIGURATION
 // -----------------------------
 
-// These variables store your database connection info
+// These variables store our database connection info
 $host     = "localhost";          // Server name (usually localhost)
-$dbname   = "your_database_name"; // Name of your database
-$username = "your_db_username";   // Your MySQL username
-$password = "your_db_password";   // Your MySQL password
+$dbname   = "your_database_name"; // Name of database
+$username = "your_db_username";   // MySQL username
+$password = "your_db_password";   // MySQL password
 
 
 // -----------------------------
 // CREATE DATABASE CONNECTION
 // -----------------------------
 
-// Create a new MySQLi connection using the credentials above
+// Create a new MySQL connection using the credentials above
 $conn = new mysqli($host, $username, $password, $dbname);
 
 
@@ -150,7 +150,7 @@ body{
 
 <script>
 // -----------------------------
-// SIMPLE JAVASCRIPT FUNCTION
+// JAVASCRIPT FUNCTION
 // -----------------------------
 
 // This function runs when button is clicked
