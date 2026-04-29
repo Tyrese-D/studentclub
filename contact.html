@@ -145,20 +145,7 @@ p > label{
 }
 
 </style>
-<script>
-function submitMessage() {
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let ruid = document.getElementById("ruid").value;
-    let message = document.getElementById("message").value;
 
-    if(name == "" || email == "" || ruid == "" || message == "") {
-        alert("Please fill out all required fields.");
-    } else {
-        alert("Your message has been submitted.");
-    }
-}
-</script>
 </head>
 <body>
 
@@ -183,29 +170,35 @@ function submitMessage() {
 
 <div class="container">
     <div class="card">
+        <form id="contactForm" action="submit_contact.php" method="POST">
+
         <p><label>Name*</label>
-        <input type="text" id="name" placeholder="Name"></p>
+        <input type="text" name="name" required></p>
 
         <p><label>Email*</label>
-        <input type="email" id="email" placeholder="Email"></p>
+        <input type="email" name="email" required></p>
 
         <p><label>RUID*</label>
-        <input type="text" id="ruid" placeholder="RUID"></p>
+        <input type="text" name="ruid" required></p>
 
         <p><label>Write Your Message*</label>
-        <textarea id="message" placeholder="Write Your Message"></textarea></p>
+        <textarea name="message" required></textarea></p>
 
-        <p><input class="btn" type="button" value="Submit" onclick="submitMessage()"></p>
+        <p><input class="btn" type="submit" value="Submit"></p>
+
+        <p id="formMessage" style="color:green; font-weight:bold;"></p>
+
+        </form>
     </div>
 
     <div class="info-box">
         <h2>Phone</h2>
-        <p>(XXX) XXX-XXXX</p>
+        <p>(123) 456-7890</p>
     </div>
 
     <div class="info-box">
         <h2>Email</h2>
-        <p>xxxxx@rutgers.business.edu</p>
+        <p>designwebclub@rutgers.business.edu</p>
     </div>
 
     <div class="info-box">
@@ -221,6 +214,27 @@ function submitMessage() {
     <a href="members.html">Members</a> |
     <a href="contact.html">Contact</a>
 </div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // stops page redirect
+
+    const formData = new FormData(this);
+
+    fetch("submit_contact.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("formMessage").innerText = "Message sent successfully!";
+        document.getElementById("contactForm").reset(); // clears form
+    })
+    .catch(error => {
+        document.getElementById("formMessage").innerText = "Error sending message.";
+    });
+});
+</script>
 
 </body>
 </html>
